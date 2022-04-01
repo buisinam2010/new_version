@@ -11,6 +11,7 @@ import 'package:html/parser.dart' show parse;
 import 'package:http/http.dart' as http;
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'dart:math';
 
 /// Information about the app's current version, and the most recent version
 /// available in the Apple App Store or Google Play Store.
@@ -125,6 +126,7 @@ class NewVersion {
     if (iOSAppStoreCountry != null) {
       parameters.addAll({"country": iOSAppStoreCountry!});
     }
+    parameters.addAll({"timestamp": Random().nextInt(1000)});
     var uri = Uri.https("itunes.apple.com", "/lookup", parameters);
     final response = await http.get(uri);
     if (response.statusCode != 200) {
