@@ -126,7 +126,7 @@ class NewVersion {
     if (iOSAppStoreCountry != null) {
       parameters.addAll({"country": iOSAppStoreCountry!});
     }
-    parameters.addAll({"timestamp": Random().nextInt(1000).toString());
+    parameters.addAll({"timestamp": Random().nextInt(1000).toString()});
     var uri = Uri.https("itunes.apple.com", "/lookup", parameters);
     final response = await http.get(uri);
     if (response.statusCode != 200) {
